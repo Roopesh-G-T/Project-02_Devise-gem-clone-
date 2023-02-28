@@ -1,0 +1,62 @@
+
+<div class="field">
+<h2>Edit Profile</h2>
+<%= form_with url: "/profile/edit_profile", method: :post do |f| %>
+   
+   <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error")%> prohibited this user from being saved! </h2>
+
+            <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>   
+        </div>
+    <% end %>
+
+<br>
+   <div class="actions">
+    <% if @user.profile_picture.attached? %>
+    <%= image_tag @user.profile_picture, alt: "profile", style: "height: 100px; width: 100px" %>
+    <% else %>
+    <%= image_tag "/assets/no_avatar.png", alt: "profile", style: "height: 100px; width: 100px" %>
+    <%= f.file_field :profile_picture%>
+    <% end %>
+    </div>
+<br>
+    <div class="field">
+        <%= f.label :first_name %> <br>
+        <%= f.text_field :first_name, :value=>@user.first_name %>
+    </div>
+<br>
+        <div class="field">
+        <%= f.label :last_name %> <br>
+        <%= f.text_field :last_name, :value=>@user.last_name %>
+    </div>
+<br>
+        <div class="field">
+        <%= f.label :mobile %> <br>
+        <%= f.number_field :mobile, :value=>@user.mobile %>
+    </div>
+<br>
+        <div class="field">
+        <%= f.label :date_of_birth %> <br>
+        <%= f.date_field :date_of_birth, :value=>@user.date_of_birth %>
+    </div>
+<br>
+
+        <div class="field">
+        <%= f.file_field :avatar %>
+        </div>
+<br>
+
+
+
+<br>
+    <div class="actions">
+    <%= f.submit "Update Profile" %><br>
+    </div>
+
+<% end %>
+</div>

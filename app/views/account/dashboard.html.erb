@@ -1,0 +1,8 @@
+<div class="dashboard">
+<h4> Welcome <%= @user.first_name %>, Your Dashboard: </h4>
+<% if @user.profile_picture.attached? %>
+    <%= link_to image_tag @user.profile_picture, style: 'height:25%; width:25%;'%>
+<% else %>
+   <%= image_tag "/assets/backImg.jpg", style: 'height:25%; width:25%;' %>
+<% end %>
+</div>

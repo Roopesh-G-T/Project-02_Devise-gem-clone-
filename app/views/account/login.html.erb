@@ -1,0 +1,31 @@
+<h2>Login</h2>
+<%= flash[:notice] %>
+<%= form_with url: "/account/login", method: :post do |f| %>
+   
+   <div class="field">
+                <i class="fas fa-envelope"></i>
+                 <i class="input-box"></i>
+                 <%= f.label :email %> <br>
+                <%= f.text_field :email %>  
+    </div>
+       
+     <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+    </div>
+
+    <br>
+    <div class="actions">
+    <%= f.submit "Login" %><br>
+    </div>
+
+    </div>
+     
+<% end %>
+
+<div class="field">
+<%= link_to "Forgot password?", password_forgot_password_path %> 
+</div>    
+                
